@@ -1,38 +1,1040 @@
-.App {
+/* =====================================================
+   AI RECOGNITION & RESPONSE
+   ANASOL STYLE FRONTEND
+===================================================== */
+
+
+/* ================= GLOBAL ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #08080a;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  background: #08080a;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+  height: 105px;
+
+  width: 100%;
+
+  background: #08080a;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 55px;
+
+  border-bottom: 1px solid #29292d;
+
+  position: relative;
+
+  z-index: 100;
+}
+
+
+/* =====================================================
+   ANASOL BRAND
+===================================================== */
+
+.anasol-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* RED A LOGO */
+
+.anasol-logo {
+  font-size: 64px;
+
+  font-weight: 900;
+
+  font-style: italic;
+
+  color: #f01925;
+
+  line-height: 1;
+}
+
+
+/* ANASOL TEXT */
+
+.anasol-text h2 {
+  font-size: 25px;
+
+  letter-spacing: 1px;
+
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+.anasol-text p {
+  margin-top: 2px;
+
+  font-size: 14px;
+
+  color: #c3c3c7;
+}
+
+
+/* =====================================================
+   HEADER DIVIDER
+===================================================== */
+
+.header-divider {
+  width: 1px;
+
+  height: 55px;
+
+  background: #46464b;
+
+  margin-left: 70px;
+
+  margin-right: 35px;
+}
+
+
+/* =====================================================
+   AI ASSISTANT
+===================================================== */
+
+.ai-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+/* SMALL ROBOT */
+
+.small-robot {
+  width: 53px;
+
+  height: 53px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: #151519;
+
+  border: 2px solid #f01925;
+
+  font-size: 28px;
+
+  box-shadow:
+    0 0 15px rgba(240, 25, 37, 0.3);
+}
+
+
+/* AI TEXT */
+
+.ai-brand-text h2 {
+  font-size: 21px;
+
+  color: #ffffff;
+
+  font-weight: 600;
+}
+
+.ai-brand-text p {
+  margin-top: 4px;
+
+  color: #a5a5aa;
+
+  font-size: 12px;
+}
+
+.ai-brand-text p span {
+  color: #f01925;
+
+  margin: 0 7px;
+
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation {
+  margin-left: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* NAV ITEM */
+
+.nav-item {
+  text-decoration: none;
+
+  color: #dddddf;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 15px 24px;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+
+  transition: all 0.3s ease;
+}
+
+
+/* NAV HOVER */
+
+.nav-item:hover {
+  background: #202024;
+
+  color: #ffffff;
+}
+
+
+/* ACTIVE HOME */
+
+.home-active {
+  background: #f01925;
+
+  color: white;
+
+  box-shadow:
+    0 8px 25px rgba(240, 25, 37, 0.3);
+}
+
+.home-active:hover {
+  background: #ff2934;
+}
+
+
+/* NAV ICON */
+
+.nav-icon {
+  font-size: 23px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.settings-wrapper {
+  position: relative;
+}
+
+
+/* SETTINGS BUTTON */
+
+.settings-button {
+  border: none;
+
+  background: #111114;
+
+  color: #ffffff;
+
+  padding: 15px 21px;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  transition: all 0.3s ease;
+}
+
+.settings-button:hover {
+  background: #f01925;
+
+  box-shadow:
+    0 8px 25px rgba(240, 25, 37, 0.25);
+}
+
+
+/* ARROW */
+
+.settings-arrow {
+  color: #f01925;
+
+  margin-left: 7px;
+
+  font-size: 12px;
+}
+
+.settings-button:hover .settings-arrow {
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   SETTINGS DROPDOWN
+===================================================== */
+
+.settings-dropdown {
+  position: absolute;
+
+  top: 63px;
+
+  right: 0;
+
+  width: 260px;
+
+  padding: 10px;
+
+  background: #17171b;
+
+  border: 1px solid #39393e;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.65);
+
+  animation: dropdownOpen 0.2s ease;
+
+  z-index: 1000;
+}
+
+
+@keyframes dropdownOpen {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* MENU BUTTON */
+
+.settings-dropdown button {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  padding: 15px;
+
+  text-align: left;
+
+  font-size: 17px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  transition: all 0.25s ease;
+}
+
+
+/* MENU HOVER */
+
+.settings-dropdown button:hover {
+  background: #f01925;
+
+  padding-left: 22px;
+}
+
+
+/* MENU ICON */
+
+.menu-icon {
+  color: #f01925;
+
+  width: 25px;
+
+  font-size: 23px;
+
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.settings-dropdown button:hover .menu-icon {
+  color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero {
+  min-height: calc(100vh - 165px);
+
+  position: relative;
+
+  overflow: hidden;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  text-align: center;
+
+  padding: 55px 30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #281014 0%,
+      #110b0d 38%,
+      #08080a 75%
+    );
 }
 
-.App-link {
-  color: #61dafb;
+
+/* =====================================================
+   BACKGROUND CIRCLES
+===================================================== */
+
+.background-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  border: 2px solid rgba(240, 25, 37, 0.28);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+/* LEFT CIRCLE */
+
+.circle-left {
+  width: 850px;
+
+  height: 850px;
+
+  left: -690px;
+
+  top: -300px;
+
+  box-shadow:
+    0 0 0 55px rgba(240, 25, 37, 0.04),
+    0 0 0 110px rgba(240, 25, 37, 0.03);
+}
+
+
+/* RIGHT CIRCLE */
+
+.circle-right {
+  width: 900px;
+
+  height: 900px;
+
+  right: -680px;
+
+  bottom: -600px;
+
+  box-shadow:
+    0 0 0 55px rgba(240, 25, 37, 0.04),
+    0 0 0 110px rgba(240, 25, 37, 0.03);
+}
+
+
+/* =====================================================
+   HERO ROBOT
+===================================================== */
+
+.hero-robot {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 20px;
+}
+
+
+/* ROBOT CIRCLE */
+
+.robot-glow {
+  width: 180px;
+
+  height: 180px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 90px;
+
+  background:
+    radial-gradient(
+      circle,
+      #29292e,
+      #0d0d10
+    );
+
+  border: 3px solid #f01925;
+
+  box-shadow:
+    0 0 20px rgba(240, 25, 37, 0.5),
+    0 0 55px rgba(240, 25, 37, 0.2);
+
+  transition: all 0.4s ease;
+}
+
+
+/* ROBOT HOVER */
+
+.robot-glow:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 35px rgba(240, 25, 37, 0.8),
+    0 0 80px rgba(240, 25, 37, 0.3);
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 1100px;
+}
+
+
+/* MAIN HEADING */
+
+.hero-content h1 {
+  font-size: 55px;
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+
+  margin-bottom: 20px;
+
+  color: #ffffff;
+}
+
+
+/* RED AI */
+
+.hero-content h1 span {
+  color: #f01925;
+}
+
+
+/* DESCRIPTION */
+
+.hero-description {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  color: #d0d0d3;
+
+  font-size: 19px;
+
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 35px;
+
+  margin-top: 50px;
+}
+
+
+/* FEATURE */
+
+.feature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  text-align: left;
+
+  min-width: 260px;
+}
+
+
+/* FEATURE ICON */
+
+.feature-icon {
+  width: 76px;
+
+  height: 76px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  border: 2px solid #f01925;
+
+  background: #170e10;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 32px;
+
+  box-shadow:
+    0 0 20px rgba(240, 25, 37, 0.2);
+
+  transition: all 0.3s ease;
+}
+
+
+/* ICON HOVER */
+
+.feature:hover .feature-icon {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 30px rgba(240, 25, 37, 0.5);
+}
+
+
+/* FEATURE TITLE */
+
+.feature-text h3 {
+  color: #ffffff;
+
+  font-size: 17px;
+
+  margin-bottom: 7px;
+
+  white-space: nowrap;
+}
+
+
+/* FEATURE DESCRIPTION */
+
+.feature-text p {
+  color: #99999f;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   FEATURE DIVIDERS
+===================================================== */
+
+.feature-divider {
+  height: 60px;
+
+  width: 1px;
+
+  background: #f01925;
+
+  opacity: 0.75;
+}
+
+
+/* =====================================================
+   START CHAT BUTTON
+===================================================== */
+
+.start-chat-button {
+  margin-top: 50px;
+
+  border: none;
+
+  background: #f01925;
+
+  color: #ffffff;
+
+  padding: 17px 35px;
+
+  border-radius: 35px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  box-shadow:
+    0 10px 35px rgba(240, 25, 37, 0.35);
+
+  transition: all 0.3s ease;
+}
+
+
+/* ARROW */
+
+.start-chat-button strong {
+  font-size: 24px;
+
+  margin-left: 10px;
+}
+
+
+/* BUTTON HOVER */
+
+.start-chat-button:hover {
+  background: #ff2934;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 45px rgba(240, 25, 37, 0.55);
+}
+
+
+/* BUTTON CLICK */
+
+.start-chat-button:active {
+  transform: translateY(0);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+  height: 60px;
+
+  width: 100%;
+
+  background: #08080a;
+
+  border-top: 1px solid #29292d;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 55px;
+
+  color: #a8a8ad;
+
+  font-size: 13px;
+}
+
+
+/* FOOTER RIGHT */
+
+.footer p:last-child {
+  color: #bdbdc2;
+}
+
+
+/* HEART */
+
+.heart {
+  color: #f01925;
+
+  font-size: 18px;
+
+  margin: 0 8px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .header {
+    padding: 0 25px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header-divider {
+    margin-left: 30px;
+
+    margin-right: 20px;
   }
+
+  .ai-brand {
+    display: none;
+  }
+
+  .feature {
+    min-width: auto;
+  }
+
+  .features {
+    gap: 20px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: auto;
+
+    min-height: 80px;
+
+    padding: 15px 20px;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+  }
+
+
+  .anasol-logo {
+    font-size: 45px;
+  }
+
+
+  .anasol-text h2 {
+    font-size: 20px;
+  }
+
+
+  .anasol-text p {
+    font-size: 11px;
+  }
+
+
+  .header-divider {
+    display: none;
+  }
+
+
+  .navigation {
+    width: 100%;
+
+    justify-content: center;
+
+    margin-left: 0;
+  }
+
+
+  .nav-item {
+    padding: 10px 13px;
+
+    font-size: 14px;
+  }
+
+
+  .settings-button {
+    padding: 10px 13px;
+
+    font-size: 14px;
+  }
+
+
+  .hero {
+    padding: 50px 20px;
+  }
+
+
+  .robot-glow {
+    width: 130px;
+
+    height: 130px;
+
+    font-size: 65px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 35px;
+  }
+
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+
+  .features {
+    flex-direction: column;
+
+    margin-top: 35px;
+  }
+
+
+  .feature-divider {
+    display: none;
+  }
+
+
+  .feature {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+
+  .footer {
+    height: auto;
+
+    padding: 20px;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+  .navigation {
+    gap: 3px;
+  }
+
+
+  .nav-item {
+    padding: 8px;
+
+    font-size: 12px;
+  }
+
+
+  .settings-button {
+    padding: 8px;
+
+    font-size: 12px;
+  }
+
+
+  .settings-dropdown {
+    right: -10px;
+
+    width: 220px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 29px;
+  }
+
+
+  .feature-icon {
+    width: 60px;
+
+    height: 60px;
+
+    font-size: 25px;
+  }
+
+
+  .feature-text h3 {
+    font-size: 15px;
+  }
+
 }
