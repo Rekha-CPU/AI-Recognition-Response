@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { askAI } from './askAI';
 import './App.css';
 
 function App() {
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('Answer will appear here.');
+
+  async function handleAsk() {
+    setAnswer('Thinking...');
+    const reply = await askAI(question);
+    setAnswer(reply);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Testing Groq</h1>
+      <input
+        type="text"
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+        placeholder="Type a question..." 
+      />
+      <button onClick={handleAsk}>Ask</button>
+      <p>{answer}</p>
     </div>
   );
 }
