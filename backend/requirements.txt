@@ -1,0 +1,4 @@
+Django==4.2.30
+django-cors-headers==4.9.0
+ollama==0.6.2
+SpeechRecognition==3.17.0
