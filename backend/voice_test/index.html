@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Voice Assistant</title>
+</head>
+
+<body>
+
+    <h1>🎤 AI Voice Assistant</h1>
+
+    <button id="startButton">🎤 Start Speaking</button>
+
+    <h3>You said:</h3>
+    <p id="question">Nothing yet...</p>
+
+    <h3>AI Answer:</h3>
+    <p id="answer">Waiting for your question...</p>
+
+    <script>
+
+        const startButton = document.getElementById("startButton");
+        const questionText = document.getElementById("question");
+        const answerText = document.getElementById("answer");
+
+        const SpeechRecognition =
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+
+            questionText.textContent =
+                "Speech recognition is not supported in this browser.";
+
+        } else {
+
+            const recognition = new SpeechRecognition();
+
+            recognition.lang = "en-US";
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            startButton.addEventListener("click", () => {
+
+                questionText.textContent = "Listening...";
+                answerText.textContent = "Thinking...";
+
+                recognition.start();
+
+            });
+
+            recognition.onresult = async (event) => {
+
+                const text =
+                    event.results[0][0].transcript;
+
+                questionText.textContent = text;
+
+                answerText.textContent = "AI is thinking...";
+
+                try {
+
+                    const response = await fetch(
+                        "http://127.0.0.1:8000/api/chat/",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                message: text
+                            })
+                        }
+                    );
+
+                    const data = await response.json();
+
+                    answerText.textContent = data.answer;
+
+                    // Make AI speak the answer
+                    const speech =
+                        new SpeechSynthesisUtterance(data.answer);
+
+                    speech.lang = "en-US";
+
+                    window.speechSynthesis.speak(speech);
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    answerText.textContent =
+                        "Could not connect to AI backend.";
+
+                }
+
+            };
+
+            recognition.onerror = (event) => {
+
+                questionText.textContent =
+                    "Voice error: " + event.error;
+
+            };
+
+        }
+
+    </script>
+
+</body>
+</html>
