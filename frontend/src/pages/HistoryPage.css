@@ -1,0 +1,50 @@
+.history-main {
+  min-height: calc(100vh - 74px);
+  padding: 60px 0;
+  background: #f8fafc;
+}
+
+.history-main h1 {
+  font-size: 40px;
+  margin: 8px 0 30px;
+}
+
+.history-empty {
+  padding: 60px 25px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+}
+
+.history-empty p {
+  color: #64748b;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-item {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 22px;
+  border-radius: 15px;
+}
+
+.history-item span {
+  color: #6366f1;
+  font-size: 12px;
+}
+
+.history-item h3 {
+  margin: 8px 0;
+}
+
+.history-item p {
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}

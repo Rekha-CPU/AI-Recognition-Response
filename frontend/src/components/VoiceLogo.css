@@ -1,0 +1,82 @@
+.voice-logo {
+  width: 82px;
+  height: 82px;
+
+  border-radius: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #ffffff;
+
+  background: linear-gradient(
+    135deg,
+    #6c3bff,
+    #3b82f6
+  );
+
+  box-shadow:
+    0 15px 40px rgba(108, 59, 255, 0.35);
+}
+
+.voice-logo svg {
+  flex-shrink: 0;
+}
+
+.voice-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 34px;
+}
+
+.voice-bars span {
+  width: 3px;
+  height: 14px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  animation: voiceBar 1s ease-in-out infinite;
+}
+
+.voice-bars span:nth-child(2) {
+  height: 24px;
+  animation-delay: 0.1s;
+}
+
+.voice-bars span:nth-child(3) {
+  height: 34px;
+  animation-delay: 0.2s;
+}
+
+.voice-bars span:nth-child(4) {
+  height: 23px;
+  animation-delay: 0.3s;
+}
+
+.voice-bars span:nth-child(5) {
+  height: 14px;
+  animation-delay: 0.4s;
+}
+
+.voice-logo-small {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+}
+
+@keyframes voiceBar {
+  0%,
+  100% {
+    transform: scaleY(0.7);
+  }
+
+  50% {
+    transform: scaleY(1.15);
+  }
+}

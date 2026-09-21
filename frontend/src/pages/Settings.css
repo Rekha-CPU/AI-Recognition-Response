@@ -1,0 +1,46 @@
+.settings-main {
+  min-height: calc(100vh - 74px);
+  padding: 60px 20px;
+  background: #f8fafc;
+}
+
+.settings-card {
+  width: min(650px, 100%);
+  margin: auto;
+  padding: 35px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+}
+
+.settings-card h1 {
+  margin: 7px 0 30px;
+}
+
+.settings-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-card label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.settings-card input,
+.settings-card select {
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: white;
+}
+
+.saved-message {
+  color: #15803d;
+  font-size: 14px;
+}
