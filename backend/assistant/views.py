@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 import json
 
-from .ai import generate_answer
+from .ai import generate_answer, generate_groq_answer
 from .models import ChatMessage
 
 
@@ -97,6 +97,31 @@ def get_history(request):
         for m in messages
     ]
     return JsonResponse({"history": history})
+
+
+@csrf_exempt
+def voice_respond(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Only POST requests are allowed."}, status=405)
+
+    user = get_user_from_token(request)
+    if user is None:
+        return JsonResponse({"error": "Invalid or missing token."}, status=401)
+
+    try:
+        data = json.loads(request.body)
+        question = data.get("text", "").strip()
+
+        if not question:
+            return JsonResponse({"error": "Please provide text."}, status=400)
+
+        answer = generate_groq_answer(question)
+
+        ChatMessage.objects.create(user=user, question=question, answer=answer)
+
+        return JsonResponse({"answer": answer})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 
 @csrf_exempt
