@@ -17,6 +17,7 @@ export async function askAI(conversationHistory) {
       })
     });
     const data = await response.json();
+    console.log("Groq response:", data);
     return data.choices[0].message.content;
   } catch (err) {
     console.error(err);
