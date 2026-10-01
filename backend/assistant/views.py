@@ -5,9 +5,8 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 import json
 
-from .ai import generate_answer, generate_groq_answer
+from .ai import generate_answer, generate_groq_answer, is_image_request, search_pixabay_image
 from .models import ChatMessage
-
 
 @csrf_exempt
 def signup(request):
@@ -115,11 +114,18 @@ def voice_respond(request):
         if not question:
             return JsonResponse({"error": "Please provide text."}, status=400)
 
+        if is_image_request(question):
+            image_url = search_pixabay_image(question)
+            if image_url:
+                ChatMessage.objects.create(user=user, question=question, answer=image_url)
+                return JsonResponse({"type": "image", "answer": image_url})
+            else:
+                return JsonResponse({"type": "text", "answer": "Couldn't find an image for that."})
+
         answer = generate_groq_answer(question)
-
         ChatMessage.objects.create(user=user, question=question, answer=answer)
+        return JsonResponse({"type": "text", "answer": answer})
 
-        return JsonResponse({"answer": answer})
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
