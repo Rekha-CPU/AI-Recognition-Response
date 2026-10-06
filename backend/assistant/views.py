@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 import json
 
-from .ai import generate_answer, generate_groq_answer, is_image_request, search_pixabay_image
+from .ai import generate_answer, generate_groq_answer
 from .models import ChatMessage
 
 @csrf_exempt
@@ -101,34 +101,30 @@ def get_history(request):
 @csrf_exempt
 def voice_respond(request):
     if request.method != "POST":
-        return JsonResponse({"error": "Only POST requests are allowed."}, status=405)
-
+        return JsonResponse({"error": "Only POST requests are allowed."},status=405)
+    
     user = get_user_from_token(request)
+
     if user is None:
-        return JsonResponse({"error": "Invalid or missing token."}, status=401)
+        return JsonResponse({"error": "Invalid or missing token."},status=401)
 
     try:
         data = json.loads(request.body)
+
         question = data.get("text", "").strip()
 
         if not question:
-            return JsonResponse({"error": "Please provide text."}, status=400)
-
-        if is_image_request(question):
-            image_url = search_pixabay_image(question)
-            if image_url:
-                ChatMessage.objects.create(user=user, question=question, answer=image_url)
-                return JsonResponse({"type": "image", "answer": image_url})
-            else:
-                return JsonResponse({"type": "text", "answer": "Couldn't find an image for that."})
+            return JsonResponse({"error": "Please provide text."},status=400)
 
         answer = generate_groq_answer(question)
-        ChatMessage.objects.create(user=user, question=question, answer=answer)
-        return JsonResponse({"type": "text", "answer": answer})
+
+        ChatMessage.objects.create(user=user,question=question,answer=answer)
+
+        return JsonResponse({"answer": answer})
 
     except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
-
+        return JsonResponse({"error": str(e)},status=500)
+ 
 
 @csrf_exempt
 def chat(request):

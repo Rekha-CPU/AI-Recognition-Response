@@ -38,24 +38,3 @@ def generate_groq_answer(question):
     )
     data = response.json()
     return data["choices"][0]["message"]["content"]
-
-def is_image_request(question):
-    image_keywords = ["picture", "image", "photo", "show me a", "pic of", "show me what"]
-    question_lower = question.lower()
-    return any(keyword in question_lower for keyword in image_keywords)
-
-
-def search_pixabay_image(query):
-    response = requests.get(
-        "https://pixabay.com/api/",
-        params={
-            "key": settings.PIXABAY_API_KEY,
-            "q": query,
-            "image_type": "photo",
-            "per_page": 3
-        }
-    )
-    data = response.json()
-    if data.get("hits"):
-        return data["hits"][0]["webformatURL"]
-    return None
